@@ -1,0 +1,53 @@
+# =============================================================================
+# Content Policy Configuration
+# All content rules are enforced programmatically — not by the LLM.
+# =============================================================================
+
+sources:
+  hadith_collections_allowed:
+    - "Sahih al-Bukhari"
+    - "Sahih Muslim"
+    - "Sunan Abu Dawood"
+    - "Jami at-Tirmidhi"
+    - "Sunan an-Nasa'i"
+    - "Sunan Ibn Majah"
+  hadith_grades_allowed:
+    - "sahih"
+    - "hasan"
+  quran_translation: "Sahih International"
+  seerah_requires_hadith_crossref: true
+
+exclusions:
+  denylist_collections:
+    - "Al-Kafi"
+    - "Bihar al-Anwar"
+    - "Nahj al-Balagha"
+  denylist_topics:
+    - "succession dispute"
+    - "imamate"
+    - "political party"
+    - "current events"
+    - "election"
+    - "government"
+    - "sectarian"
+  reject_if_no_source_match: true
+
+visuals:
+  depict_prophets: false
+  depict_sahaba_faces: false
+  style: "calligraphy_and_nature"   # calligraphy_and_nature | abstract_geometric | silhouette_no_face
+
+audio:
+  music: "vocal_only"               # vocal_only | none | instrumental
+  quran_recitation_source: "licensed_qari_audio"   # never TTS for literal ayah recitation
+
+review:
+  human_approval_required: true
+  auto_publish_after_n_clean_runs: null   # keep null; only raise once pipeline is trusted
+
+publishing:
+  platform: "tiktok"
+  ai_disclosure_required: true
+  max_posts_per_day: 2
+  aspect_ratio: "9:16"
+  default_privacy: "SELF_ONLY"      # SELF_ONLY until TikTok audit passes

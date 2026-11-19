@@ -1,0 +1,104 @@
+# =============================================================================
+# Source API Configuration
+# =============================================================================
+
+quran:
+  api_base: "https://api.quran.com/api/v4"
+  translation_id: 131                # Sahih International
+  tafsir_id: 169                     # Tafsir Ibn Kathir (English)
+  audio:
+    # Licensed qari recitation — never TTS for actual Quran text
+    base_url: "https://everyayah.com/data"
+    reciter: "Alafasy_128kbps"       # Mishary Rashid Alafasy
+    format: "mp3"
+
+  # Map story keywords → surah:ayah ranges for topic-based fetching
+  story_mappings:
+    "people of the cave":
+      surah: 18
+      start_ayah: 9
+      end_ayah: 26
+    "story of yusuf":
+      surah: 12
+      start_ayah: 1
+      end_ayah: 111
+    "story of musa and khidr":
+      surah: 18
+      start_ayah: 60
+      end_ayah: 82
+    "story of ibrahim":
+      surah: 37
+      start_ayah: 83
+      end_ayah: 113
+    "story of nuh":
+      surah: 71
+      start_ayah: 1
+      end_ayah: 28
+    "story of adam":
+      surah: 2
+      start_ayah: 30
+      end_ayah: 39
+    "story of dawud and jalut":
+      surah: 2
+      start_ayah: 246
+      end_ayah: 252
+    "story of sulayman":
+      surah: 27
+      start_ayah: 15
+      end_ayah: 44
+    "story of maryam":
+      surah: 19
+      start_ayah: 16
+      end_ayah: 36
+    "story of dhul qarnayn":
+      surah: 18
+      start_ayah: 83
+      end_ayah: 101
+
+hadith:
+  # Primary: sunnah.com (requires API key)
+  sunnah_api:
+    base_url: "https://api.sunnah.com/v1"
+    enabled: true   # Set false if no API key available
+
+  # Fallback: fawazahmed0/hadith-api (free, no key needed)
+  fawazahmed0_api:
+    base_url: "https://cdn.jsdelivr.net/gh/fawazahmed0/hadith-api@1"
+    enabled: true
+
+  # Edition name mappings for fawazahmed0 API
+  edition_map:
+    "Sahih al-Bukhari": "eng-bukhari"
+    "Sahih Muslim": "eng-muslim"
+    "Sunan Abu Dawood": "eng-abudawud"
+    "Jami at-Tirmidhi": "eng-tirmidhi"
+    "Sunan an-Nasa'i": "eng-nasai"
+    "Sunan Ibn Majah": "eng-ibnmajah"
+
+  # Arabic edition mappings
+  arabic_edition_map:
+    "Sahih al-Bukhari": "ara-bukhari"
+    "Sahih Muslim": "ara-muslim"
+    "Sunan Abu Dawood": "ara-abudawud"
+    "Jami at-Tirmidhi": "ara-tirmidhi"
+    "Sunan an-Nasa'i": "ara-nasai"
+    "Sunan Ibn Majah": "ara-ibnmajah"
+
+seerah:
+  # Seerah episodes mapped to relevant hadith search terms
+  episode_mappings:
+    "hijra to medina":
+      collections: ["Sahih al-Bukhari", "Sahih Muslim"]
+      search_terms: ["hijra", "migration", "medina"]
+    "battle of badr":
+      collections: ["Sahih al-Bukhari", "Sahih Muslim"]
+      search_terms: ["badr", "battle"]
+    "treaty of hudaybiyyah":
+      collections: ["Sahih al-Bukhari"]
+      search_terms: ["hudaybiyyah", "treaty"]
+    "conquest of makkah":
+      collections: ["Sahih al-Bukhari", "Sahih Muslim"]
+      search_terms: ["conquest", "makkah", "fath"]
+    "farewell sermon":
+      collections: ["Sahih Muslim", "Sunan Abu Dawood"]
+      search_terms: ["farewell", "hajj", "sermon", "khutbah"]
